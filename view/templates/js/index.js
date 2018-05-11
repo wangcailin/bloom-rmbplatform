@@ -1,8 +1,17 @@
 $(function(){
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var scroll, maskScroll;
     var scroSet = setTimeout(function(){
         clearTimeout(scroSet)
-        // scroll = new IScroll('#iscroll');
+        if(isiOS){
+            scroll = new IScroll('#iscroll'); 
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+                capture: false,
+                passive: false
+            } : false); 
+        }
         maskScroll = new IScroll('#maskScroll');
     }, 500)
     var service;
@@ -85,7 +94,11 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                if(isiOS){
+                    scroll.scrollTo(0,0,0);
+                } else {
+                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                }
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
@@ -102,15 +115,27 @@ $(function(){
             }
 
             if (!guizZ($('#username'), '名字')) {
-                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                if(isiOS){
+                    scroll.scrollTo(0,0,0);
+                } else {
+                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                }
                 canpost = false;
             }
             if(!guizZ($('#username_for'), '姓氏')) {
-                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+               if(isiOS){
+                    scroll.scrollTo(0,0,0);
+                } else {
+                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                }
                 canpost = false;
             }
             if(!guizZ($('#company'), '公司')) {
-                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                if(isiOS){
+                    scroll.scrollTo(0,0,0);
+                } else {
+                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                }
                 canpost = false;
             }
             if(!guizZ($('#position'), '职位')) {
@@ -165,13 +190,16 @@ $(function(){
 	$('.successClose').click(function(){
 		$('.submitSuccess').hide();
 	})
-    window.addEventListener("resize", function() {
-      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
-         window.setTimeout(function() {
-            document.activeElement.scrollIntoViewIfNeeded();
-         },0);
-      }
-   })
+    if(isAndroid){
+        window.addEventListener("resize", function() {
+          if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+             window.setTimeout(function() {
+                document.activeElement.scrollIntoViewIfNeeded();
+             },0);
+          }
+       })
+    }
+    
 	document.getElementById('maskScroll').addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
 		capture: false,
 		passive: false
