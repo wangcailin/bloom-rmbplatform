@@ -2,7 +2,7 @@ $(function(){
     var scroll, maskScroll;
     var scroSet = setTimeout(function(){
         clearTimeout(scroSet)
-        scroll = new IScroll('#iscroll');
+        // scroll = new IScroll('#iscroll');
         maskScroll = new IScroll('#maskScroll');
     }, 500)
     var service;
@@ -85,7 +85,7 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                scroll.scrollTo(0,0,0);
+                // scroll.scrollTo(0,0,0);
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
@@ -102,15 +102,15 @@ $(function(){
             }
 
             if (!guizZ($('#username'), '名字')) {
-                scroll.scrollTo(0,-200,0);
+                // scroll.scrollTo(0,-200,0);
                 canpost = false;
             }
             if(!guizZ($('#username_for'), '姓氏')) {
-                scroll.scrollTo(0,-200,0);
+                // scroll.scrollTo(0,-200,0);
                 canpost = false;
             }
             if(!guizZ($('#company'), '公司')) {
-                scroll.scrollTo(0,-200,0);
+                // scroll.scrollTo(0,-200,0);
                 canpost = false;
             }
             if(!guizZ($('#position'), '职位')) {
@@ -167,31 +167,30 @@ $(function(){
 	$('.successClose').click(function(){
 		$('.submitSuccess').hide();
 	})
-    window.onresize = function(){
-        alert(1)
-        scroll.refresh();
-    }
-    window.addEventListener("resize", function() {
-      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
-         window.setTimeout(function() {
-            document.activeElement.scrollIntoViewIfNeeded();
-         },0);
-      }
-   })
-	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
-		capture: false,
-		passive: false
-	} : false);
-	function isPassive() {
-	    var supportsPassiveOption = false;
-	    try {
-	        addEventListener("test", null, Object.defineProperty({}, 'passive', {
-	            get: function () {
-	                supportsPassiveOption = true;
-	            }
-	        }));
-	    } catch(e) {}
-	    return supportsPassiveOption;
-	}
+ //    window.onresize = function(){
+ //        scroll.refresh();
+ //    }
+ //    window.addEventListener("resize", function() {
+ //      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+ //         window.setTimeout(function() {
+ //            document.activeElement.scrollIntoViewIfNeeded();
+ //         },0);
+ //      }
+ //   })
+	// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+	// 	capture: false,
+	// 	passive: false
+	// } : false);
+	// function isPassive() {
+	//     var supportsPassiveOption = false;
+	//     try {
+	//         addEventListener("test", null, Object.defineProperty({}, 'passive', {
+	//             get: function () {
+	//                 supportsPassiveOption = true;
+	//             }
+	//         }));
+	//     } catch(e) {}
+	//     return supportsPassiveOption;
+	// }
 
 })
