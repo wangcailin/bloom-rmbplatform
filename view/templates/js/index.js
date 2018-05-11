@@ -206,10 +206,7 @@ $(function(){
 		capture: false,
 		passive: false
 	} : false);
-    document.getElementsByClassName('register')[0].addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
-        capture: false,
-        passive: false
-    } : false);
+   
 	function isPassive() {
 	    var supportsPassiveOption = false;
 	    try {
