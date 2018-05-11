@@ -137,7 +137,7 @@ $(function(){
             }
             if(!guizZ($('#phone'), '电话')){
                 canpost = false;
-            } else if(!phoneExg.test($('#phone').val())){
+            } else if(!phoneNumberCheck($('#phone').val())){
                 $('#phone').parents('li').find('.error').text('电话格式不正确').show();
                 canpost = false;
             }
@@ -169,6 +169,7 @@ $(function(){
 	})
 
 	$('.successClose').click(function(){
+        window.location.href = 'index.php?m=event&a=video';
 		$('.submitSuccess').hide();
 	})
     if(isAndroid){

@@ -5,7 +5,7 @@
 	<!-- <script src="{{$jsSite}}viewport.js"></script> -->
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
 	<title>彭博RMB债券平台</title>
-	<link rel="stylesheet" href="{{$cssSite}}index.css?v=1.1">
+	<link rel="stylesheet" href="{{$cssSite}}index.css?v=1.5">
 	<link href="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
 	<script>
         (function(win, docu){
@@ -20,18 +20,20 @@
 	</script>
 </head>
 <body>
-	<div id="rmb-video" style="opacity: 0;" class="orientation">
+	<div id="rmb-video" style="opacity: 0;" class="orientation isAndro">
 		<div class="video-background">
 			<div class="videoBox">
-				<video id="player-container-id" cotrols playsinline webkit-playinline x5-playinline></video>
+				<video id="player-container-id" x5-video-orientation="landscape" cotrols playsinline webkit-playinline x5-playinline></video>
 			</div>
 			<img src="{{$imageSite}}poster.jpg" class="centerBg" alt="">
 			<span class="playIcon"></span>
 		</div>
 		<div class="navList">
 			<div class="video-nav">
-				<img src="{{$imageSite}}navlistNo.png" class="slide active" alt="">
-				<img src="{{$imageSite}}navlistStart.png" class="upicon" alt="">
+				<div class="imgClick" style="width:.27972028rem;height:.27972028rem;position: absolute;top: .2rem;left: 0;">
+					<img src="{{$imageSite}}navlistNo.png" class="slide active" alt="">
+					<img src="{{$imageSite}}navlistStart.png" class="upicon" alt="">
+				</div>
 			</div>
 			<ul class="slidelist">
 				<li>
@@ -48,6 +50,9 @@
 		<div class="retubtn"><a href="index.php?m=event&a=register">跳过</a></div>
 	</div>
 </body>
+<script>
+	
+</script>
 <script src="{{$jsSite}}jquery.1.11.3.js"></script>
 <script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
 <script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
@@ -55,8 +60,11 @@
  	var u = navigator.userAgent;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-   
-    var windowres = function(win, doc) {
+	var player = TCPlayer("player-container-id", { 
+            fileID: "7447398156004493740", 
+            appID: "1251362550"
+        });
+	var iosFun = function(win, doc) {
         var docEl = doc.getElementById('rmb-video');
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function(data) {
@@ -75,15 +83,13 @@
         if (!doc.addEventListener) return;
         win.addEventListener(resizeEvt, recalc, false);
         doc.addEventListener('DOMContentLoaded', recalc, false);
+    };
+    if(isiOS){
+    	iosFun(window, document);
+    } else {
+    	$('#rmb-video').removeClass('orientation').addClass('orientated isAndro');
     }
-     if(isiOS){
-    	windowres(window, document);
-    }
-	var player = TCPlayer("player-container-id", { 
-            fileID: "7447398156004493740", 
-            appID: "1251362550"
-        });
-	$('.navList').click(function(){
+	$('.imgClick').click(function(){
 		$('.navList').toggleClass('slideactive');
 		$('.slidelist').slideToggle('fast');
 		$('.video-nav img').toggleClass('active');
