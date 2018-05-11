@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="js/viewport.js"></script>
+	<title>彭博</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="background-bg">
+			<!-- <img src="" alt=""> -->
+		</div>
+		<div class="content">
+			<div class="textCont">
+				<h2 class="textH2">
+					<p class="textH2_p">发现流动性最佳的债券</p>
+				</h2>
+				<h2 class="textH2">
+					<p class="textH2_p2">把握中国债券市场机遇</p>
+				</h2>
+				<h3 class="textH3">
+					<p class="textH3_p">彭博RMB债券平台</p>
+				</h3>
+				<ul class="iconList">
+					<li>
+						<img src="images/indexIcon-01.png" alt="">
+						<p>市场资讯</p>
+					</li>
+					<li>
+						<img src="images/indexIcon-02.png" alt="">
+						<p>制定策略</p>
+					</li>
+					<li>
+						<img src="images/indexIcon-03.png" alt="">
+						<p>报价分析</p>
+					</li>
+					<li>
+						<img src="images/indexIcon-04.png" alt="">
+						<p>交易表现跟踪</p>
+					</li>
+				</ul>
+			</div>
+			<span class="logoIcon">
+				<img src="images/logoIcon.png" alt="">
+			</span>
+		</div>
+	</div>
+	<script src="js/jquery.1.11.3.js"></script>
+	<script>
+		$(function(){
+			$('.textCont').addClass('active');
+			function gotoVideo(){
+				var locat = setTimeout(function(){
+					clearTimeout(locat)
+					window.location.href = 'video.html';
+				}, 8000)
+			}
+			var time = setTimeout(function(){
+				clearTimeout(time);
+				$('.textCont').removeClass('active').addClass('noactive');
+				$('.iconList').addClass('ulactive');
+				gotoVideo();
+			}, 4000)
+		})
+	</script>
+</body>
+</html>

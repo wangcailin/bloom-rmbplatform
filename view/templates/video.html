@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- <script src="js/viewport.js"></script> -->
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
+	<title>视频播放</title>
+	<link rel="stylesheet" href="css/index.css?v=1.0">
+	<link href="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
+	<script>
+        (function(win, docu){
+        	var docElWidth = docu.documentElement.clientWidth;
+            var docElHeight = docu.documentElement.clientHeight;
+        	if(window.orientation == 0 || window.orientation == 180) { 
+                document.documentElement.style.fontSize = docElWidth / 5 + 'px';
+            } else {
+				document.documentElement.style.fontSize = docElHeight / 5 + 'px';
+            }
+        })(window, document)
+	</script>
+</head>
+<body>
+	<div id="rmb-video" class="orientation">
+		<div class="video-background">
+			<div class="videoBox">
+				<video id="player-container-id" cotrols playsinline webkit-playinline x5-playinline></video>
+			</div>
+			<img src="images/poster.jpg" class="centerBg" alt="">
+			<span class="playIcon"></span>
+		</div>
+		<div class="navList">
+			<div class="video-nav">
+				<img src="images/navlistNo.png" class="slide active" alt="">
+				<img src="images/navlistStart.png" class="upicon" alt="">
+			</div>
+			<ul class="slidelist">
+				<li>
+					<a href="register.html">预约演示</a>
+				</li>
+				<li>
+					<a href="register.html">下载资料</a>
+				</li>
+				<li>
+					<a href="register.html">报名参会</a>
+				</li>
+			</ul>
+		</div>
+		<div class="retubtn"><a href="register.html">跳过</a></div>
+	</div>
+</body>
+<script>
+	(function(win, doc) {
+        var docEl = doc.getElementById('rmb-video');
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function(data) {
+                var docElWidth = doc.documentElement.clientWidth;
+                var docElHeight = doc.documentElement.clientHeight;
+                if(window.orientation == 0 || window.orientation == 180) { 
+	                docEl.style.width = docElHeight + 'px';  
+	                docEl.style.height = docElWidth + 'px';
+	                 docEl.className = 'orientation';
+	            } else {
+	            	docEl.style.width = docElWidth + 'px';  
+	                docEl.style.height = docElHeight + 'px';
+	            	docEl.className = 'orientated';
+	            }
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(window, document);
+</script>
+<script src="js/jquery.1.11.3.js"></script>
+<script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
+<script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
+<script>
+	var player = TCPlayer("player-container-id", { 
+            fileID: "7447398156004493740", 
+            appID: "1251362550"
+        });
+	$('.navList').click(function(){
+		$('.navList').toggleClass('slideactive');
+		$('.slidelist').slideToggle('fast');
+		$('.video-nav img').toggleClass('active');
+	})
+	$('.playIcon').click(function(){
+		$('.videoBox').show();
+		player.play();
+	})
+	setTimeout(function(){
+		var videos = document.getElementsByTagName('video')[0];
+		videos.addEventListener('pause', function(){
+			$('.videoBox').hide();
+		})
+		videos.addEventListener('ended', function(){
+			window.location.href = 'register.html';
+		})
+	}, 1000)
+
+
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+		capture: false,
+		passive: false
+	} : false);
+	function isPassive() {
+	    var supportsPassiveOption = false;
+	    try {
+	        addEventListener("test", null, Object.defineProperty({}, 'passive', {
+	            get: function () {
+	                supportsPassiveOption = true;
+	            }
+	        }));
+	    } catch(e) {}
+	    return supportsPassiveOption;
+	}
+</script>
+</html>

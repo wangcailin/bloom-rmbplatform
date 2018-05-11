@@ -1,0 +1,9 @@
+<?php
+define("MB_AKEY","06ecf1afe35640099515e52e5cd9b513"); //这里的'*********'请改成你的App Key
+define("MB_SKEY","31cb4d88da43fe1ba7f55b895a65a864"); //这里的'*********'请改成你的App Secret
+
+define( "MB_RETURN_FORMAT" , 'json' );
+define( "MB_API_HOST" , 'open.t.qq.com' );
+//define('WEBSITE','http://localhost/test_youku/update_0829_v2');
+define('WEBSITE','http://minisite.youku.com/pgfx1');
+?>

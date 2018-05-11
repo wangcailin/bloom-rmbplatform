@@ -1,0 +1,77 @@
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+
+  wx.config({ 
+    appId: '{{$signPackage.appId}}', 
+    timestamp: '{{$signPackage.timestamp}}', 
+    nonceStr: '{{$signPackage.nonceStr}}', 
+    signature: '{{$signPackage.signature}}',
+    jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage"] 
+	});
+ wx.error(function(res) {
+		for(i in res)
+	 {	
+				//alert(i+" "+ res[i]);
+		}
+	});   
+ wx.ready(function() {
+                    wx.onMenuShareTimeline({
+			                title: '彭博一英里接力赛上海站', 
+			                link: "http://bloom.blue-dot.cn/amile/index.php?m=event&a=index&source={{$openid}}",
+			                imgUrl: 'http://bloom.blue-dot.cn/amile/view/templates/images/bloomshare.jpg',
+			                success: function() {
+								 blue_tracker_monitor('sharelog',{       //监测分享的方法
+									  'sharetype':'wechatTimeLine',
+									  'shareurl':'http://bloom.blue-dot.cn/amile/index.php?m=event&a=index?source={{$openid}}'     
+								 });								
+			                },
+			                cancel: function() {
+			                }
+			            });
+			
+			            wx.onMenuShareAppMessage({
+			                title: '彭博一英里接力赛上海站',
+			                desc : '2016年9月22日彭博一英里接力赛',
+			                link: "http://bloom.blue-dot.cn/amile/index.php?m=event&a=index&source={{$openid}}",
+			                imgUrl: 'http://bloom.blue-dot.cn/amile/view/templates/images/bloomshare.jpg',
+			                type: '', 
+			                dataUrl: '', 
+			                success: function() {	
+								 blue_tracker_monitor('sharelog',{       //监测分享的方法
+									  'sharetype':'wechatAppMessage',
+									  'shareurl':'http://bloom.blue-dot.cn/amile/index.php?m=event&a=index?source={{$openid}}'     
+								 });					
+			                },
+			                cancel: function() {
+			                }
+			            });
+			});
+</script>
+<script>
+(function() {
+  var blue_hm = document.createElement("script");
+  blue_hm.src = "http://tracking.blue-dot.cn/js/monitor.js";             
+  var blue_s = document.getElementsByTagName("script")[0];
+  blue_s.parentNode.insertBefore(blue_hm, blue_s);
+
+	  //数据监测js文件加载后调用
+	  blue_hm.onload = function(){
+		  blue_tracker_monitor('init',{
+			   'openid':'{{$openid}}',           //用户openid
+			   'unionid':'',                                             //用户在多微信公众号中的身份 unionid
+			   'prjid':'BDWA-000009-1',                                             //跟踪id
+			   'otherid':''                                  //网站其他用于登陆的用户id
+			   
+		  }); 
+	  }
+})();
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2a64cb1d854ac20414f3d1c66cfcae2e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
