@@ -53,7 +53,9 @@
 			if(!$this->sourceOpenid){
 				$this->sourceOpenid=$this->openid;
 			}
-			$this->template->assign('openid',$this->openid);
+            $signPackage = $this->test->GetSignPackage($_GET["requrl"]);
+            $this->template->assign('signPackage',$signPackage);
+            $this->template->assign('openid',$this->openid);
 			
 		}
 		
@@ -73,10 +75,7 @@
 		 * @access public
 		 */
 		public function index()
-		{		
-			$signPackage = $this->test->GetSignPackage($_GET["requrl"]);
-			$this->template->assign('signPackage',$signPackage);	
-			
+		{
 			$this->template->display('index.html');
 		}
 

@@ -8,12 +8,6 @@
     signature: '{{$signPackage.signature}}',
     jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage"] 
 	});
- wx.error(function(res) {
-		for(i in res)
-	 {	
-				//alert(i+" "+ res[i]);
-		}
-	});   
  wx.ready(function() {
      var u = navigator.userAgent;
      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
