@@ -170,13 +170,13 @@ $(function(){
  //    window.onresize = function(){
  //        scroll.refresh();
  //    }
- //    window.addEventListener("resize", function() {
- //      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
- //         window.setTimeout(function() {
- //            document.activeElement.scrollIntoViewIfNeeded();
- //         },0);
- //      }
- //   })
+    window.addEventListener("resize", function() {
+      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+         window.setTimeout(function() {
+            document.activeElement.scrollIntoViewIfNeeded();
+         },0);
+      }
+   })
 	// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
 	// 	capture: false,
 	// 	passive: false
