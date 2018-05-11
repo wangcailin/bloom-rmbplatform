@@ -5,18 +5,12 @@ $(function(){
     var scroll, maskScroll;
     var scroSet = setTimeout(function(){
         clearTimeout(scroSet)
-        // if(isiOS){
-        //     scroll = new IScroll('#iscroll'); 
-        //     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
-        //         capture: false,
-        //         passive: false
-        //     } : false); 
-        // }
         maskScroll = new IScroll('#maskScroll');
     }, 500)
     var service;
     var site;
 	var emailEx = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  // 邮箱判断
+    var phoneExg = /^(0|86|17951)?(13[0-9]|15[012356789]|16[012356789]|17[0-9]|18[0-9]|19[0-9]|14[0-9])[0-9]{8}$/;
 	var repeatLimit = 5;
 	var phoneCheck = [/[^0-9()+-.\s]/, "0{"+repeatLimit+",}|1{"+repeatLimit+",}|2{"+repeatLimit+",}|3{"+repeatLimit+",}|4{"+repeatLimit+",}|5{"+repeatLimit+",}|6{"+repeatLimit+",}|7{"+repeatLimit+",}|8{"+repeatLimit+",}|9{"+repeatLimit+",}", /0123456789/, /1234567890/, /9876543210/, /0987654321/, /123456789/, /123456/, /234567/, /345678/, /456789/, /567890/, /012345/, /098765/, /987654/, /876543/, /765432/, /654321/, /543210/];
     var phoneNumberCheck = function phoneNumberCheck(value){
@@ -94,11 +88,7 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                // if(isiOS){
-                //     scroll.scrollTo(0,0,0);
-                // } else {
-                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                // }
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
@@ -117,27 +107,15 @@ $(function(){
             }
 
             if (!guizZ($('#username'), '名字')) {
-                // if(isiOS){
-                //     scroll.scrollTo(0,0,0);
-                // } else {
-                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                // }
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             }
             if(!guizZ($('#username_for'), '姓氏')) {
-               // if(isiOS){
-               //      scroll.scrollTo(0,0,0);
-               //  } else {
-                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                // }
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             }
             if(!guizZ($('#company'), '公司')) {
-                // if(isiOS){
-                //     scroll.scrollTo(0,0,0);
-                // } else {
-                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                // }
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             }
             if(!guizZ($('#position'), '职位')) {
@@ -157,7 +135,7 @@ $(function(){
             }
             if(!guizZ($('#phone'), '电话')){
                 canpost = false;
-            } else if(!phoneNumberCheck($('#phone').val())){
+            } else if(!phoneExg.test($('#phone').val())){
                 $('#phone').parents('li').find('.error').text('电话格式不正确').show();
                 canpost = false;
             }
@@ -206,7 +184,7 @@ $(function(){
 		capture: false,
 		passive: false
 	} : false);
-   
+
 	function isPassive() {
 	    var supportsPassiveOption = false;
 	    try {
