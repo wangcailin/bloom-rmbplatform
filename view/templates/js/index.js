@@ -73,9 +73,11 @@ $(function(){
 		return istrue;
 	}
 	var step = false;
+    function stepChan(){
+        step = false;
+    }
 	$('.submit').click(function(){
 		if (step == false){
-			step = true;
 
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
@@ -135,14 +137,16 @@ $(function(){
                 return;
             }
             console.log(object);
-            $('.submitSuccess').show();
+            // $('.submitSuccess').show();
+
+            step = true;
             $.post('index.php?m=event&a=registerSubmit', object, function(res){
                 if (res == '1'){
                     $('.submitSuccess').show();
                 }else{
                     alert('提交失败');
                 }
-                step = false;
+                stepChan();
             }, 'json')
 		}
 
