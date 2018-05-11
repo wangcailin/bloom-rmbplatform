@@ -5,13 +5,13 @@ $(function(){
     var scroll, maskScroll;
     var scroSet = setTimeout(function(){
         clearTimeout(scroSet)
-        if(isiOS){
-            scroll = new IScroll('#iscroll'); 
-            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
-                capture: false,
-                passive: false
-            } : false); 
-        }
+        // if(isiOS){
+        //     scroll = new IScroll('#iscroll'); 
+        //     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+        //         capture: false,
+        //         passive: false
+        //     } : false); 
+        // }
         maskScroll = new IScroll('#maskScroll');
     }, 500)
     var service;
@@ -94,11 +94,11 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                if(isiOS){
-                    scroll.scrollTo(0,0,0);
-                } else {
+                // if(isiOS){
+                //     scroll.scrollTo(0,0,0);
+                // } else {
                     $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                }
+                // }
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
@@ -117,27 +117,27 @@ $(function(){
             }
 
             if (!guizZ($('#username'), '名字')) {
-                if(isiOS){
-                    scroll.scrollTo(0,0,0);
-                } else {
+                // if(isiOS){
+                //     scroll.scrollTo(0,0,0);
+                // } else {
                     $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                }
+                // }
                 canpost = false;
             }
             if(!guizZ($('#username_for'), '姓氏')) {
-               if(isiOS){
-                    scroll.scrollTo(0,0,0);
-                } else {
+               // if(isiOS){
+               //      scroll.scrollTo(0,0,0);
+               //  } else {
                     $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                }
+                // }
                 canpost = false;
             }
             if(!guizZ($('#company'), '公司')) {
-                if(isiOS){
-                    scroll.scrollTo(0,0,0);
-                } else {
+                // if(isiOS){
+                //     scroll.scrollTo(0,0,0);
+                // } else {
                     $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
-                }
+                // }
                 canpost = false;
             }
             if(!guizZ($('#position'), '职位')) {
