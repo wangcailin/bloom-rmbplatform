@@ -19,12 +19,14 @@ $(function(){
         $(phoneCheck).each(function(index, regexCheck){
             var phoneCheckIndex = new RegExp(regexCheck);
             if (phoneCheckIndex.test(phoneFieldValue)) {
+                console.log(222)
                 isren=false;
                 return false;
             }
             else {
                 if(phoneFieldValue.length < 5 || phoneFieldValue.length > 11)
                 {
+                    console.log(11)
                     isren=false;
                     return false;
                 }
