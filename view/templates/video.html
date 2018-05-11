@@ -20,7 +20,7 @@
 	</script>
 </head>
 <body>
-	<div id="rmb-video" class="orientation">
+	<div id="rmb-video" style="opacity: 0;" class="orientation">
 		<div class="video-background">
 			<div class="videoBox">
 				<video id="player-container-id" cotrols playsinline webkit-playinline x5-playinline></video>
@@ -88,6 +88,7 @@
 		player.play();
 	})
 	setTimeout(function(){
+		$('#rmb-video').css({'opacity':1});
 		var videos = document.getElementsByTagName('video')[0];
 		videos.addEventListener('pause', function(){
 			$('.videoBox').hide();
@@ -95,7 +96,7 @@
 		videos.addEventListener('ended', function(){
 			window.location.href = 'index.php?m=event&a=register';
 		})
-	}, 1000)
+	}, 500)
 
 
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {

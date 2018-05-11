@@ -1,6 +1,10 @@
 $(function(){
-	var scroll = new IScroll('#iscroll');
-	var maskScroll = new IScroll('#maskScroll');
+    var scroll, maskScroll;
+    var scroSet = setTimeout(function(){
+        clearTimeout(scroSet)
+        scroll = new IScroll('#iscroll');
+        maskScroll = new IScroll('#maskScroll');
+    }, 500)
     var service;
     var site;
 	var emailEx = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  // 邮箱判断
@@ -78,11 +82,11 @@ $(function(){
     }
 	$('.submit').click(function(){
 		if (step == false){
-
+            var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
                 scroll.scrollTo(0,0,0);
-                return false;
+                canpost = false;
             } else {
                 $('.optOneerror').hide();
             }
@@ -97,6 +101,44 @@ $(function(){
                 site = $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
             }
 
+            if (!guizZ($('#username'), '名')) {
+                scroll.scrollTo(0,-200,0);
+                canpost = false;
+            }
+            if(!guizZ($('#username_for'), '姓')) {
+                scroll.scrollTo(0,-200,0);
+                canpost = false;
+            }
+            if(!guizZ($('#company'), '公司')) {
+                scroll.scrollTo(0,-200,0);
+                canpost = false;
+            }
+            if(!guizZ($('#position'), '职位')) {
+                canpost = false;
+            }
+            if(!guizZ($('#province'), '城市')) {
+                canpost = false;
+            }
+            if(!guizZ($('#country'), '国家')) {
+                canpost = false;
+            }
+            if(!guizZ($('#email'), '公司邮箱')){
+                canpost = false;
+            }else if(!emailEx.test($('#email').val())){
+                $('#email').parents('li').find('.error').text('邮箱格式不正确').show();
+                canpost = false;
+            }
+            if(!guizZ($('#phone'), '电话')){
+                canpost = false;
+            } else if(!phoneNumberCheck($('#phone').val())){
+                $('#phone').parents('li').find('.error').text('电话格式不正确').show();
+                canpost = false;
+            }
+
+            if(!canpost){return false;}
+            console.log(object);
+            // $('.submitSuccess').show();
+
             var object = {
                 username: $('#username').val(),
                 username_for: $('#username_for').val(),
@@ -109,35 +151,6 @@ $(function(){
                 service: service,
                 site: site
             };
-            if (!guizZ($('#username'), '名')) {
-                scroll.scrollTo(0,-200,0);
-                return;
-            } else if(!guizZ($('#username_for'), '姓')) {
-                scroll.scrollTo(0,-200,0);
-                return;
-            } else if(!guizZ($('#company'), '公司')) {
-                scroll.scrollTo(0,-200,0);
-                return;
-            } else if(!guizZ($('#position'), '职位')) {
-                return;
-            } else if(!guizZ($('#province'), '城市')) {
-                return;
-            } else if(!guizZ($('#country'), '国家')) {
-                return;
-            }else if(!guizZ($('#email'), '公司邮箱')){
-                return;
-            }else if(!emailEx.test($('#email').val())){
-                $('#email').parents('li').find('.error').text('邮箱格式不正确').show();
-                return;
-            }else if(!guizZ($('#phone'), '电话')){
-                return;
-            } else if(!phoneNumberCheck($('#phone').val())){
-                $('#phone').parents('li').find('.error').text('电话格式不正确').show();
-                return;
-            }
-            console.log(object);
-            // $('.submitSuccess').show();
-
             step = true;
             $.post('index.php?m=event&a=registerSubmit', object, function(res){
                 if (res == '1'){
