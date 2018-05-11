@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<!-- <script src="js/viewport.js"></script> -->
+	<!-- <script src="{{$jsSite}}viewport.js"></script> -->
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
 	<title>视频播放</title>
-	<link rel="stylesheet" href="css/index.css?v=1.0">
+	<link rel="stylesheet" href="{{$cssSite}}index.css?v=1.0">
 	<link href="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
 	<script>
         (function(win, docu){
@@ -25,13 +25,13 @@
 			<div class="videoBox">
 				<video id="player-container-id" cotrols playsinline webkit-playinline x5-playinline></video>
 			</div>
-			<img src="images/poster.jpg" class="centerBg" alt="">
+			<img src="{{$imageSite}}poster.jpg" class="centerBg" alt="">
 			<span class="playIcon"></span>
 		</div>
 		<div class="navList">
 			<div class="video-nav">
-				<img src="images/navlistNo.png" class="slide active" alt="">
-				<img src="images/navlistStart.png" class="upicon" alt="">
+				<img src="{{$imageSite}}navlistNo.png" class="slide active" alt="">
+				<img src="{{$imageSite}}navlistStart.png" class="upicon" alt="">
 			</div>
 			<ul class="slidelist">
 				<li>
@@ -70,7 +70,7 @@
         doc.addEventListener('DOMContentLoaded', recalc, false);
     })(window, document);
 </script>
-<script src="js/jquery.1.11.3.js"></script>
+<script src="{{$jsSite}}jquery.1.11.3.js"></script>
 <script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
 <script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
 <script>
