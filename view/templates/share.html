@@ -1,6 +1,6 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
-
+    var shareUrl = 'http://bloom.blue-dot.cn/rmbplatform/index.php?m=event&a=index';
   wx.config({ 
     appId: '{{$signPackage.appId}}', 
     timestamp: '{{$signPackage.timestamp}}', 
@@ -15,14 +15,22 @@
 		}
 	});   
  wx.ready(function() {
+     var u = navigator.userAgent;
+     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+     if (isiOS) {
+         var videost = document.getElementsByTagName('video')[0];
+         videost.play();
+     }
+
                     wx.onMenuShareTimeline({
-			                title: '彭博一英里接力赛上海站', 
-			                link: "http://bloom.blue-dot.cn/amile/index.php?m=event&a=index&source={{$openid}}",
-			                imgUrl: 'http://bloom.blue-dot.cn/amile/view/templates/images/bloomshare.jpg',
+			                title: '彭博RMB债券平台',
+			                link: shareUrl+"&source={{$openid}}",
+			                imgUrl: 'http://bloom.blue-dot.cn/rmbplatform/view/templates/images/share.jpg',
 			                success: function() {
 								 blue_tracker_monitor('sharelog',{       //监测分享的方法
 									  'sharetype':'wechatTimeLine',
-									  'shareurl':'http://bloom.blue-dot.cn/amile/index.php?m=event&a=index?source={{$openid}}'     
+									  'shareurl':shareUrl+'?source={{$openid}}'
 								 });								
 			                },
 			                cancel: function() {
@@ -30,16 +38,16 @@
 			            });
 			
 			            wx.onMenuShareAppMessage({
-			                title: '彭博一英里接力赛上海站',
-			                desc : '2016年9月22日彭博一英里接力赛',
-			                link: "http://bloom.blue-dot.cn/amile/index.php?m=event&a=index&source={{$openid}}",
-			                imgUrl: 'http://bloom.blue-dot.cn/amile/view/templates/images/bloomshare.jpg',
+			                title: '彭博RMB债券平台',
+			                desc : '发现流动性最佳的债券，把握中国债券市场机遇',
+			                link: shareUrl+"&source={{$openid}}",
+			                imgUrl: 'http://bloom.blue-dot.cn/rmbplatform/view/templates/images/share.jpg',
 			                type: '', 
 			                dataUrl: '', 
 			                success: function() {	
 								 blue_tracker_monitor('sharelog',{       //监测分享的方法
 									  'sharetype':'wechatAppMessage',
-									  'shareurl':'http://bloom.blue-dot.cn/amile/index.php?m=event&a=index?source={{$openid}}'     
+									  'shareurl':shareUrl+'?source={{$openid}}'
 								 });					
 			                },
 			                cancel: function() {
