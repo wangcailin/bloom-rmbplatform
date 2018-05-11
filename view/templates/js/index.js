@@ -73,51 +73,60 @@ $(function(){
 		}
 		return istrue;
 	}
+	var step = false;
 	$('.submit').click(function(){
-		var object = {
-			username: $('#username').val(),
-			username_for: $('#username_for').val(),
-			company: $('#company').val(),
-			position: $('#position').val(),
-			province: $('#province').val(),
-			country: $('#country').val(),
-			email: $('#email').val(),
-			phone: $('#phone').val()
-		};
-		if (!guizZ($('#username'), '名')) {
-			scroll.scrollTo(0,-$('#username').offset().top-200,300);
-			return;
-		} else if(!guizZ($('#username_for'), '姓')) {
-			scroll.scrollTo(0,-$('#username_for').offset().top-200,300);
-			return;
-		} else if(!guizZ($('#company'), '公司')) {
-			scroll.scrollTo(0,-$('#company').offset().top-200,300);
-			return;
-		} else if(!guizZ($('#position'), '职位')) {
-			scroll.scrollTo(0,-$('#position').offset().top-200,300);
-			return;
-		} else if(!guizZ($('#province'), '城市')) {
-			scroll.scrollTo(0,-$('#province').offset().top-200,300);
-			return;
-		} else if(!guizZ($('#country'), '国家')) {
-			scroll.scrollTo(0,-$('#country').offset().top-200,300);
-			return;
-		}else if(!guizZ($('#email'), '公司邮箱')){
-			return;
-		}else if(!emailEx.test($('#email').val())){
-			$('#email').parents('li').find('.error').text('邮箱格式不正确').show();
-			return;
-		}else if(!guizZ($('#phone'), '电话')){
-			return;
-		} else if(!phoneNumberCheck($('#phone').val())){
-			$('#phone').parents('li').find('.error').text('电话格式不正确').show();
-			return;
+		if (step == false){
+			step = true;
+            var object = {
+                username: $('#username').val(),
+                username_for: $('#username_for').val(),
+                company: $('#company').val(),
+                position: $('#position').val(),
+                province: $('#province').val(),
+                country: $('#country').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val()
+            };
+            if (!guizZ($('#username'), '名')) {
+                scroll.scrollTo(0,-$('#username').offset().top-200,300);
+                return;
+            } else if(!guizZ($('#username_for'), '姓')) {
+                scroll.scrollTo(0,-$('#username_for').offset().top-200,300);
+                return;
+            } else if(!guizZ($('#company'), '公司')) {
+                scroll.scrollTo(0,-$('#company').offset().top-200,300);
+                return;
+            } else if(!guizZ($('#position'), '职位')) {
+                scroll.scrollTo(0,-$('#position').offset().top-200,300);
+                return;
+            } else if(!guizZ($('#province'), '城市')) {
+                scroll.scrollTo(0,-$('#province').offset().top-200,300);
+                return;
+            } else if(!guizZ($('#country'), '国家')) {
+                scroll.scrollTo(0,-$('#country').offset().top-200,300);
+                return;
+            }else if(!guizZ($('#email'), '公司邮箱')){
+                return;
+            }else if(!emailEx.test($('#email').val())){
+                $('#email').parents('li').find('.error').text('邮箱格式不正确').show();
+                return;
+            }else if(!guizZ($('#phone'), '电话')){
+                return;
+            } else if(!phoneNumberCheck($('#phone').val())){
+                $('#phone').parents('li').find('.error').text('电话格式不正确').show();
+                return;
+            }
+            console.log(object);
+            $('.submitSuccess').show();
+            $.post('index.php?m=event&a=registerSubmit', object, function(res){
+                if (res == '1'){
+                    $('.submitSuccess').show();
+                }else{
+                    alert('提交失败');
+                }
+                step = false;
+            }, 'json')
 		}
-		console.log(object);
-		$('.submitSuccess').show();
-		// $.post('', object, function(date){
-			// $('.submitSuccess').show();
-		// }, 'json')
 
 	})
 
