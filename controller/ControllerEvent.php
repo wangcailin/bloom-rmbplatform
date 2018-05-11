@@ -101,6 +101,7 @@
             $data['tel']            = $_POST['phone'];
             $data['service']        = $_POST['service'];
             $data['site']           = $_POST['site'];
+            $data['time']           = time();
             if ($this->model->insert($data, 'bloom_rmbplatform')){
                 echo '1';
             }
