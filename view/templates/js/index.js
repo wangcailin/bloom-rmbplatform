@@ -83,6 +83,8 @@ $(function(){
                 $('.optOneerror').show();
                 scroll.scrollTo(0,0,0);
                 return false;
+            } else {
+                $('.optOneerror').hide();
             }
             if($('.optOne .active').length === 1){
                 service = $('.optOne .active').text();
@@ -153,7 +155,13 @@ $(function(){
 		$('.submitSuccess').hide();
 	})
 
-
+    window.addEventListener("resize", function() {
+      if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
+         window.setTimeout(function() {
+            document.activeElement.scrollIntoViewIfNeeded();
+         },0);
+      }
+   })
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
 		capture: false,
 		passive: false
