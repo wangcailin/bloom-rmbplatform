@@ -18,7 +18,7 @@
      var u = navigator.userAgent;
      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-     if (isiOS) {
+     if (isiOS && window.location.href.indexOf('video') !== -1) {
          var videost = document.getElementsByTagName('video')[0];
          videost.play();
      }
