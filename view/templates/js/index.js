@@ -167,7 +167,9 @@ $(function(){
 	$('.successClose').click(function(){
 		$('.submitSuccess').hide();
 	})
-
+    window.onresize = function(){
+        scroll.refresh();
+    }
     window.addEventListener("resize", function() {
       if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
          window.setTimeout(function() {
