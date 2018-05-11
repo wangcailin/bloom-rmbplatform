@@ -110,6 +110,8 @@ $(function(){
             }
             if($('.optTwo .active').length === 1){
                 site = $('.optTwo .active').text();
+            }else if($('.optTwo .active').length === 0){
+                site = null;
             }else {
                 site = $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
             }
