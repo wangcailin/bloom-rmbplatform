@@ -85,7 +85,7 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                // scroll.scrollTo(0,0,0);
+                $('.wrapper').animate({scrollTop: 0}, 300);
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
@@ -102,15 +102,15 @@ $(function(){
             }
 
             if (!guizZ($('#username'), '名字')) {
-                // scroll.scrollTo(0,-200,0);
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             }
             if(!guizZ($('#username_for'), '姓氏')) {
-                // scroll.scrollTo(0,-200,0);
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             }
             if(!guizZ($('#company'), '公司')) {
-                // scroll.scrollTo(0,-200,0);
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             }
             if(!guizZ($('#position'), '职位')) {
@@ -136,8 +136,6 @@ $(function(){
             }
 
             if(!canpost){return false;}
-            console.log(object);
-            // $('.submitSuccess').show();
 
             var object = {
                 username: $('#username').val(),
@@ -167,9 +165,6 @@ $(function(){
 	$('.successClose').click(function(){
 		$('.submitSuccess').hide();
 	})
- //    window.onresize = function(){
- //        scroll.refresh();
- //    }
     window.addEventListener("resize", function() {
       if(document.activeElement.tagName=="INPUT" || document.activeElement.tagName=="TEXTAREA") {
          window.setTimeout(function() {
