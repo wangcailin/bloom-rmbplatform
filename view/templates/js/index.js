@@ -1,8 +1,17 @@
 $(function(){
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var scroll, maskScroll;
     var scroSet = setTimeout(function(){
         clearTimeout(scroSet)
-        // scroll = new IScroll('#iscroll');
+        if(isiOS){
+            scroll = new IScroll('#iscroll'); 
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, isPassive() ? {
+                capture: false,
+                passive: false
+            } : false); 
+        }
         maskScroll = new IScroll('#maskScroll');
     }, 500)
     var service;
