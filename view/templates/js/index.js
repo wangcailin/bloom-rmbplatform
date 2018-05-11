@@ -108,22 +108,19 @@ $(function(){
                 site: site
             };
             if (!guizZ($('#username'), '名')) {
-                scroll.scrollTo(0,-$('#username').offset().top-200,0);
+                scroll.scrollTo(0,-200,0);
                 return;
             } else if(!guizZ($('#username_for'), '姓')) {
-                scroll.scrollTo(0,-$('#username_for').offset().top-200,0);
+                scroll.scrollTo(0,-200,0);
                 return;
             } else if(!guizZ($('#company'), '公司')) {
-                scroll.scrollTo(0,-$('#company').offset().top-200,0);
+                scroll.scrollTo(0,-200,0);
                 return;
             } else if(!guizZ($('#position'), '职位')) {
-                scroll.scrollTo(0,-$('#position').offset().top-200,0);
                 return;
             } else if(!guizZ($('#province'), '城市')) {
-                scroll.scrollTo(0,-$('#province').offset().top-200,0);
                 return;
             } else if(!guizZ($('#country'), '国家')) {
-                scroll.scrollTo(0,-$('#country').offset().top-200,0);
                 return;
             }else if(!guizZ($('#email'), '公司邮箱')){
                 return;
