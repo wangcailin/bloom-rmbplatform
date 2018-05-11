@@ -55,9 +55,7 @@
  	var u = navigator.userAgent;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    // if(isiOS){
-    	windowres(window, document);
-    // }
+   
     var windowres = function(win, doc) {
         var docEl = doc.getElementById('rmb-video');
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
@@ -77,6 +75,9 @@
         if (!doc.addEventListener) return;
         win.addEventListener(resizeEvt, recalc, false);
         doc.addEventListener('DOMContentLoaded', recalc, false);
+    }
+     if(isiOS){
+    	windowres(window, document);
     }
 	var player = TCPlayer("player-container-id", { 
             fileID: "7447398156004493740", 
