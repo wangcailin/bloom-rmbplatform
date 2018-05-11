@@ -29,19 +29,14 @@
 			
 			include_once("../jssdk3.php");
 			$this->test = new JSSDK("wxe91b175d5b5f020c", "b650c8edd1158faf1cce07df21f32fca");
-//$this->jssdk = new JSSDK("wx6df60d01cc2e0ab3", "c70eda9f0f8efbd6010a264661b1188a");
 
-			//setcookie('bloom_openid',$_GET['bloom_openid'],$this->config->time-86400*12,$this->config->cookiePath,$this->config->domain,$this->config->cookieSecure);die();
-			//setcookie('state',$this->curPageURL(),$this->config->time-86400*30,$this->config->cookiePath,$this->config->domain,$this->config->cookieSecure);die();
-		//var_dump($_COOKIE);die();
 			if($_GET['bloom_openid']){
 				
 				setcookie('bloom_openid',$_GET['bloom_openid'],$this->config->time+86400*12,$this->config->cookiePath,$this->config->domain,$this->config->cookieSecure);
-				//var_dump($_GET['simens_openid']);die();
 				header("Location:".str_replace('&bloom_openid='.$_GET['bloom_openid'],'',str_replace('?bloom_openid='.$_GET['bloom_openid'],'',$this->curPageURL())));
 				die();
 			}
-			$this->openid=$_COOKIE['bloom_openid'];
+			$this->openid = $_COOKIE['bloom_openid'];
 			
 			if($_GET['sourceOpenid']){
 				setcookie('sourceOpenid',$_GET['sourceOpenid'],$this->config->time+86400*12,$this->config->cookiePath,$this->config->domain,$this->config->cookieSecure);
@@ -50,12 +45,8 @@
 			}
 			$this->sourceOpenid=$_COOKIE['sourceOpenid'];
 			
-			//setcookie('sourceOpenid',$_GET['sourceOpenid'],$this->config->time-86400*12,$this->config->cookiePath,$this->config->domain,$this->config->cookieSecure);
-				
 			if(!$this->openid){
-				//var_dump(2222);die();
 				setcookie('state',$this->curPageURL(),$this->config->time+86400*30,$this->config->cookiePath,$this->config->domain,$this->config->cookieSecure);
-				//var_dump($_COOKIE);die();
 				header("Location:https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2704d18d6f9757d5&redirect_uri=".urlencode("http://wk.blue-dot.cn/getOpenid4.php")."&response_type=code&scope=snsapi_base&state=".urlencode($this->curPageURL())."#wechat_redirect");
 				die("请从微信入口进入活动");
 			}
