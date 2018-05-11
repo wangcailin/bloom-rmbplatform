@@ -23,7 +23,7 @@
 	<div id="rmb-video" style="opacity: 0;" class="orientation">
 		<div class="video-background">
 			<div class="videoBox">
-				<video id="player-container-id" cotrols playsinline webkit-playinline x5-playinline></video>
+				<video id="player-container-id" x-webkit-airplay="true" webkit-playsinline="" playsinline="true"></video>
 			</div>
 			<img src="{{$imageSite}}poster.jpg" class="centerBg" alt="">
 			<span class="playIcon"></span>
@@ -48,15 +48,8 @@
 		<div class="retubtn"><a href="index.php?m=event&a=register">跳过</a></div>
 	</div>
 </body>
-<script src="{{$jsSite}}jquery.1.11.3.js"></script>
-<script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
-<script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
 <script>
- 	var u = navigator.userAgent;
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-   
-    var windowres = function(win, doc) {
+	(function(win, doc) {
         var docEl = doc.getElementById('rmb-video');
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function(data) {
@@ -75,10 +68,15 @@
         if (!doc.addEventListener) return;
         win.addEventListener(resizeEvt, recalc, false);
         doc.addEventListener('DOMContentLoaded', recalc, false);
-    }
-     if(isiOS){
-    	windowres(window, document);
-    }
+    })(window, document);
+</script>
+<script src="{{$jsSite}}jquery.1.11.3.js"></script>
+<script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/lib/hls.min.0.8.8.js"></script>
+<script src="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"></script>
+<script>
+ 	var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 	var player = TCPlayer("player-container-id", { 
             fileID: "7447398156004493740", 
             appID: "1251362550"
