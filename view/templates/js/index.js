@@ -93,20 +93,20 @@ $(function(){
             } else {
                 $('.optOneerror').hide();
             }
-            if($('.optOne .active').length === 1){
-                service = $('.optOne .active').text();
-            }else if($('.optOne .active').length === 0){
-                service = null;
-            }else {
-                service = $('.optOne .optionbtn').eq(0).text() + ',' + $('.optOne .active').eq(1).text();
-            }
-            if($('.optTwo .active').length === 1){
-                site = ',' + $('.optTwo .active').text();
-            }else if($('.optTwo .active').length === 0){
-                site = null;
-            }else {
-                site = ',' + $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
-            }
+            // if($('.optOne .active').length === 1){
+            //     service = $('.optOne .active').text();
+            // }else if($('.optOne .active').length === 0){
+            //     service = null;
+            // }else {
+            //     service = $('.optOne .optionbtn').eq(0).text() + ',' + $('.optOne .active').eq(1).text();
+            // }
+            // if($('.optTwo .active').length === 1){
+            //     site = ',' + $('.optTwo .active').text();
+            // }else if($('.optTwo .active').length === 0){
+            //     site = null;
+            // }else {
+            //     site = ',' + $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
+            // }
 
             if (!guizZ($('#username'), '名字')) {
                 $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
@@ -153,7 +153,10 @@ $(function(){
                 country: $('#country').val(),
                 email: $('#email').val(),
                 phone: $('#phone').val(),
-                service: service + site
+                service1: $('.optOne .optionbtn').eq(0).hasClass('active')?$('.optOne .optionbtn').eq(0).text():'',
+                service2: $('.optOne .optionbtn').eq(1).hasClass('active')?$('.optOne .optionbtn').eq(1).text():'',
+                beijing: $('.optTwo .optionbtn').eq(0).hasClass('active')?$('.optTwo .optionbtn').eq(0).text():'',
+                shanghia:$('.optTwo .optionbtn').eq(1).hasClass('active')?$('.optTwo .optionbtn').eq(1).text():''
             };
             step = true;
             $.post('index.php?m=event&a=registerSubmit', object, function(res){
