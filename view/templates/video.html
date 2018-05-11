@@ -5,7 +5,7 @@
 	<!-- <script src="{{$jsSite}}viewport.js"></script> -->
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
 	<title>彭博RMB债券平台</title>
-	<link rel="stylesheet" href="{{$cssSite}}index.css?v=1.1">
+	<link rel="stylesheet" href="{{$cssSite}}index.css?v=1.2">
 	<link href="http://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css" rel="stylesheet">
 	<script>
         (function(win, docu){
@@ -20,7 +20,7 @@
 	</script>
 </head>
 <body>
-	<div id="rmb-video" style="opacity: 0;" class="orientation">
+	<div id="rmb-video" style="opacity: 0;" class="orientation isAndro">
 		<div class="video-background">
 			<div class="videoBox">
 				<video id="player-container-id" x5-video-orientation="landscape" cotrols playsinline webkit-playinline x5-playinline></video>
@@ -85,7 +85,7 @@
     if(isiOS){
     	iosFun(window, document);
     } else {
-    	$('#rmb-video').removeClass('orientation').addClass('orientated');
+    	$('#rmb-video').removeClass('orientation').addClass('orientated isAndro');
     }
 	$('.navList').click(function(){
 		$('.navList').toggleClass('slideactive');
