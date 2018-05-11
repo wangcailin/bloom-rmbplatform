@@ -153,10 +153,10 @@ $(function(){
                 country: $('#country').val(),
                 email: $('#email').val(),
                 phone: $('#phone').val(),
-                service1: $('.optOne .optionbtn').eq(0).hasClass('active')?$('.optOne .optionbtn').eq(0).text():'',
-                service2: $('.optOne .optionbtn').eq(1).hasClass('active')?$('.optOne .optionbtn').eq(1).text():'',
-                beijing: $('.optTwo .optionbtn').eq(0).hasClass('active')?$('.optTwo .optionbtn').eq(0).text():'',
-                shanghia:$('.optTwo .optionbtn').eq(1).hasClass('active')?$('.optTwo .optionbtn').eq(1).text():''
+                service1: $('.optOne .optionbtn').eq(0).hasClass('active') ? '是' : '否',
+                service2: $('.optOne .optionbtn').eq(1).hasClass('active') ? '是' : '否',
+                beijing: $('.optTwo .optionbtn').eq(0).hasClass('active') ? '是' : '否',
+                shanghai:$('.optTwo .optionbtn').eq(1).hasClass('active') ? '是' : '否'
             };
             step = true;
             $.post('index.php?m=event&a=registerSubmit', object, function(res){

@@ -98,10 +98,10 @@
             $data['country']        = $_POST['country'];
             $data['email']          = $_POST['email'];
             $data['tel']            = $_POST['phone'];
-            $data['service1']       = $_POST['service1'] ? $_POST['service1'] : '';
-            $data['service2']       = $_POST['service2'] ? $_POST['service2'] : '';
-            $data['beijing']        = $_POST['beijing'] ? $_POST['beijing'] : '';
-            $data['shanghai']       = $_POST['shanghai'] ? $_POST['shanghai'] : '';
+            $data['service1']       = $_POST['service1'];
+            $data['service2']       = $_POST['service2'];
+            $data['beijing']        = $_POST['beijing'];
+            $data['shanghai']       = $_POST['shanghai'];
             $data['time']           = time();
             if ($this->model->insert($data, 'bloom_rmbplatform')){
                 echo '1';
