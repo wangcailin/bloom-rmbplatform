@@ -169,7 +169,7 @@ $(function(){
 	})
 
 	$('.successClose').click(function(){
-        window.location.href = 'index.php?m=event&a=index';
+        window.location.href = 'index.php?m=event&a=video';
 		$('.submitSuccess').hide();
 	})
     if(isAndroid){
