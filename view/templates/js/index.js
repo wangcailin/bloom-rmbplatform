@@ -101,11 +101,11 @@ $(function(){
                 site = $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
             }
 
-            if (!guizZ($('#username'), '名')) {
+            if (!guizZ($('#username'), '名字')) {
                 scroll.scrollTo(0,-200,0);
                 canpost = false;
             }
-            if(!guizZ($('#username_for'), '姓')) {
+            if(!guizZ($('#username_for'), '姓氏')) {
                 scroll.scrollTo(0,-200,0);
                 canpost = false;
             }
