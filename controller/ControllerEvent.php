@@ -97,7 +97,7 @@
             $data['job']            = $_POST['position'];
             $data['city']           = $_POST['province'];
             $data['country']        = $_POST['country'];
-            $data['email']          = $_POST['username'];
+            $data['email']          = $_POST['email'];
             $data['tel']            = $_POST['phone'];
             $data['service']        = $_POST['service'];
             $data['site']           = $_POST['site'];
