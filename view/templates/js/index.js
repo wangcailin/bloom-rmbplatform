@@ -169,6 +169,7 @@ $(function(){
 	})
 
 	$('.successClose').click(function(){
+        window.location.href = 'index.php?m=event&a=index';
 		$('.submitSuccess').hide();
 	})
     if(isAndroid){
