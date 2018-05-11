@@ -94,7 +94,11 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                if(isiOS){
+                    scroll.scrollTo(0,0,0);
+                } else {
+                    $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
+                }
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
