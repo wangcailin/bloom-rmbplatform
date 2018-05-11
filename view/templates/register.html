@@ -10,80 +10,81 @@
 	<div class="wrapper" id="iscroll">
 		<div class="register">
 			<div class="formCon">
-				<span class="returnBtn"><a href="video.html"></a></span>
-				<p class="formtext">请在下方勾选所需服务，并准确填写您的信息，我们会尽快与您联系。</p>
+				<span class="returnBtn"><a href="index.php?m=event&a=video"></a></span>
+				<p class="formtext">请在下方勾选您想了解的信息或希望参加的峰会（可多选），并准确填写您的信息，我们会尽快与您联系。</p>
 				<div class="optionA optOne">
-					<span class="optionbtn">预约演示</span>
-					<span class="optionbtn">下载资料</span>
+					<span class="optionbtn" monitor="预约演示,点击">预约演示</span>
+					<span class="optionbtn" monitor="下载资料,点击">下载资料</span>
+					<div class="optOneerror">请选择您需要的服务</div>
 				</div>
 				<h2 class="formTit">
 					彭博债券新时代<br/>
 					2018彭博中国债券策略峰会
 				</h2>
 				<div class="optionA optTwo">
-					<span class="optionbtn">北京</span>
-					<span class="optionbtn">上海</span>
+					<span class="optionbtn" monitor="选择北京,点击">北京</span>
+					<span class="optionbtn" monitor="选择上海,点击">上海</span>
 				</div>
-				<p class="schedule">查看会议日程</p>
+				<p class="schedule" monitor="查看会议日程,点击">查看会议日程</p>
 				<ul class="formBox">
 					<li>
-						<span class="error">名不能为空</span>	
-						<h2>名</h2>
+						<span class="error">名字不能为空</span>
+						<h2>名字</h2>
 						<span class="inputBox">
-							<input type="text" id="username">
-						</span>
+								<input type="text" id="username">
+							</span>
 					</li>
 					<li>
-						<span class="error">姓不能为空</span>	
-						<h2>姓</h2>
+						<span class="error">姓氏不能为空</span>
+						<h2>姓氏</h2>
 						<span class="inputBox">
-							<input type="text" id="username_for">
-						</span>
+								<input type="text" id="username_for">
+							</span>
 					</li>
 					<li>
-						<span class="error">公司不能为空</span>	
+						<span class="error">公司不能为空</span>
 						<h2>公司</h2>
 						<span class="inputBox">
-							<input type="text" id="company">
-						</span>
+								<input type="text" id="company">
+							</span>
 					</li>
 					<li>
-						<span class="error">职位不能为空</span>	
+						<span class="error">职位不能为空</span>
 						<h2>职位</h2>
 						<span class="inputBox">
-							<input type="text" id="position">
-						</span>
+								<input type="text" id="position">
+							</span>
 					</li>
 					<li>
-						<span class="error">城市不能为空</span>	
+						<span class="error">城市不能为空</span>
 						<h2>城市</h2>
 						<span class="inputBox">
-							<input type="text" id="province">
-						</span>
+								<input type="text" id="province">
+							</span>
 					</li>
 					<li>
-						<span class="error">国家不能为空</span>	
+						<span class="error">国家不能为空</span>
 						<h2>国家</h2>
 						<span class="inputBox">
-							<input type="text" id="country">
-						</span>
+								<input type="text" id="country">
+							</span>
 					</li>
 					<li>
-						<span class="error">公司邮箱不能为空</span>	
+						<span class="error">公司邮箱不能为空</span>
 						<h2>公司邮箱</h2>
 						<span class="inputBox">
-							<input type="text" id="email">
-						</span>
+								<input type="text" id="email">
+							</span>
 					</li>
 					<li>
-						<span class="error">电话不能为空</span>	
+						<span class="error">电话不能为空</span>
 						<h2>电话</h2>
 						<span class="inputBox">
-							<input type="text" id="phone">
-						</span>
+								<input type="text" id="phone">
+							</span>
 					</li>
 				</ul>
-				<div class="submit">
+				<div class="submit" monitor="提交,点击">
 					提交
 				</div>
 			</div>
@@ -91,18 +92,18 @@
 	</div>
 	<div class="maskbox" id="maskScroll">
 		<div class="maskCon">
-			<span class="closeIcon"></span>
+			<span class="closeIcon" monitor="关闭会议议程弹框,点击"></span>
 			<h2 class="redt">会议议程</h2>
 			<div class="optionA maskOpt">
-				<span class="optionbtn active">北京</span>
-				<span class="optionbtn">上海</span>
+				<span class="optionbtn active" monitor="弹框选择北京,点击">北京</span>
+				<span class="optionbtn" monitor="弹框选择上海,点击">上海</span>
 			</div>
 			<div class="beij showBox">
 				<p><span class="redt">时间：</span>5月21日</p>
 				<h3 class="ffTitle redt">会议议程</h3>
 				<div class="floatTxt">
 					<div class="left">
-						13:30-14:00 
+						13:30-14:00
 					</div>
 					<div class="right">
 						<p>嘉宾签到</p>
@@ -132,11 +133,11 @@
 					</div>
 					<div class="right">
 						<p>嘉宾对话—中国银行间债券市场
-	                     下半年趋势展望和投资策略</p>
+							下半年趋势展望和投资策略</p>
 						<p class="redt">翟晨曦 天风证券股份有限公司副总裁兼公司执委会委员，天风国际董事局主席</p>
-	                     <p class="redt">于金酉 工商银行金融市场部人民币利率交易处处长</p>
-	                     <p class="redt">胡永青 嘉实基金管理有限公司董事总经理</p>
-	                     <p class="redt">主持人：李琦 彭博债券市场专家</p>
+						<p class="redt">于金酉 工商银行金融市场部人民币利率交易处处长</p>
+						<p class="redt">胡永青 嘉实基金管理有限公司董事总经理</p>
+						<p class="redt">主持人：李琦 彭博债券市场专家</p>
 					</div>
 				</div>
 				<div class="floatTxt">
@@ -150,12 +151,12 @@
 				</div>
 				<div class="floatTxt">
 					<div class="left">
-						16:05-16:45 
+						16:05-16:45
 					</div>
 					<div class="right">
 						<p>炉边畅谈—人民币计价债券被纳入彭博巴克莱全球综合指数后的市场流动性展望及策略分析</p>
 						<p class="redt">王彤 中国银行（香港）有限公司全球市场总经理</p>
-	                     <p class="redt">Steve Berkley 彭博指数业务全球负责人</p>
+						<p class="redt">Steve Berkley 彭博指数业务全球负责人</p>
 					</div>
 				</div>
 				<div class="floatTxt">
@@ -172,7 +173,7 @@
 				<h3 class="ffTitle redt">会议议程</h3>
 				<div class="floatTxt">
 					<div class="left">
-						13:30-14:00 
+						13:30-14:00
 					</div>
 					<div class="right">
 						<p>嘉宾签到</p>
@@ -202,12 +203,12 @@
 					</div>
 					<div class="right">
 						<p>嘉宾对话—中国银行间债券市场
-	                     下半年趋势展望和投资策略</p>
+							下半年趋势展望和投资策略</p>
 						<p class="redt"> 薛宏立 浦发银行总行金融市场部总经理</p>
-	                     <p class="redt">程剑 海通证券固定收益部董事总经理 </p>
-	                     <p class="redt">黄嘉诚 富达国际中国区首席投资官暨固定收益基金经理</p>
-	                     <p class="redt">张劲秋 汇丰中国环球资本市场部董事总经理固定收益交易总监</p>
-	                     <p class="redt">主持人：李琦 彭博债券市场专家</p>
+						<p class="redt">程剑 海通证券固定收益部董事总经理 </p>
+						<p class="redt">黄嘉诚 富达国际中国区首席投资官暨固定收益基金经理</p>
+						<p class="redt">张劲秋 汇丰中国环球资本市场部董事总经理固定收益交易总监</p>
+						<p class="redt">主持人：李琦 彭博债券市场专家</p>
 					</div>
 				</div>
 				<div class="floatTxt">
@@ -221,12 +222,12 @@
 				</div>
 				<div class="floatTxt">
 					<div class="left">
-						16:05-16:45 
+						16:05-16:45
 					</div>
 					<div class="right">
 						<p>炉边畅谈—人民币计价债券被纳入彭博巴克莱全球综合指数后的市场流动性展望及策略分析</p>
 						<p class="redt">沈华 中国银行（香港）资产管理有限公司总裁</p>
-	                     <p class="redt">Steve Berkley 彭博指数业务全球负责人</p>
+						<p class="redt">Steve Berkley 彭博指数业务全球负责人</p>
 					</div>
 				</div>
 				<div class="floatTxt">
@@ -243,7 +244,7 @@
 
 	<!-- 提交成功 -->
 	<div class="submitSuccess">
-		<span class="successClose"></span>
+		<span class="successClose" monitor="关闭提交成功弹框,点击"></span>
 		<div class="textSucc">
 			您已成功提交信息，<br/>
 			资料审核通过后我们会<br/>尽快与您取得联系。
@@ -251,6 +252,6 @@
 	</div>
 	<script src="{{$jsSite}}jquery.1.11.3.js"></script>
 	<script src="{{$jsSite}}iscroll.min.js"></script>
-	<script src="{{$jsSite}}index.js?v=1.1"></script>
+	<script src="{{$jsSite}}index.js?v=1.2"></script>
 </body>
 </html>

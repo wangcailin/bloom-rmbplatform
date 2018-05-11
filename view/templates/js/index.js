@@ -1,6 +1,8 @@
 $(function(){
 	var scroll = new IScroll('#iscroll');
 	var maskScroll = new IScroll('#maskScroll');
+    var service;
+    var site;
 	var emailEx = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  // 邮箱判断
 	var repeatLimit = 5;
 	var phoneCheck = [/[^0-9()+-.\s]/, "0{"+repeatLimit+",}|1{"+repeatLimit+",}|2{"+repeatLimit+",}|3{"+repeatLimit+",}|4{"+repeatLimit+",}|5{"+repeatLimit+",}|6{"+repeatLimit+",}|7{"+repeatLimit+",}|8{"+repeatLimit+",}|9{"+repeatLimit+",}", /0123456789/, /1234567890/, /9876543210/, /0987654321/, /123456789/, /123456/, /234567/, /345678/, /456789/, /567890/, /012345/, /098765/, /987654/, /876543/, /765432/, /654321/, /543210/];
@@ -42,16 +44,13 @@ $(function(){
 		$('.showBox').eq($(this).index()).show();
 	})
 
-	$('.optOne .optionbtn').click(function(){
-		$('.optOne .optionbtn').removeClass('active');
-		$(this).addClass('active');
-	})
+    $('.optOne .optionbtn').click(function(){
+        $(this).toggleClass('active');
+    })
 
-	$('.optTwo .optionbtn').click(function(){
-		$('.optTwo .optionbtn').removeClass('active');
-		$(this).addClass('active');
-	})
-
+    $('.optTwo .optionbtn').click(function(){
+        $(this).toggleClass('active');
+    })
 
 	$('.inputBox input').on('input', function(){
 		$(this).parents('.inputBox').addClass('active');
@@ -77,6 +76,23 @@ $(function(){
 	$('.submit').click(function(){
 		if (step == false){
 			step = true;
+
+            if($('.optOne .active').length == 0){
+                $('.optOneerror').show();
+                scroll.scrollTo(0,0,0);
+                return false;
+            }
+            if($('.optOne .active').length === 1){
+                service = $('.optOne .active').text();
+            }else {
+                service = $('.optOne .optionbtn').eq(0).text() + ',' + $('.optOne .active').eq(1).text();
+            }
+            if($('.optTwo .active').length === 1){
+                site = $('.optTwo .active').text();
+            }else {
+                site = $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
+            }
+
             var object = {
                 username: $('#username').val(),
                 username_for: $('#username_for').val(),
@@ -85,7 +101,9 @@ $(function(){
                 province: $('#province').val(),
                 country: $('#country').val(),
                 email: $('#email').val(),
-                phone: $('#phone').val()
+                phone: $('#phone').val(),
+                service: service,
+                site: site
             };
             if (!guizZ($('#username'), '名')) {
                 scroll.scrollTo(0,-$('#username').offset().top-200,300);
