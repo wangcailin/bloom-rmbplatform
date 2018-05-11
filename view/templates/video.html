@@ -90,6 +90,8 @@
     	$('#rmb-video').removeClass('orientation').addClass('orientated isAndro');
     }
 	$('.imgClick').click(function(){
+		$('.videoBox').show();
+		player.pause();
 		$('.navList').toggleClass('slideactive');
 		$('.slidelist').slideToggle('fast');
 		$('.video-nav img').toggleClass('active');
