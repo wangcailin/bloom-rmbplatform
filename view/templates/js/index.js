@@ -85,7 +85,7 @@ $(function(){
             var canpost = true;
             if($('.optOne .active').length == 0){
                 $('.optOneerror').show();
-                $('.wrapper').animate({scrollTop: 0}, 300);
+                $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
             } else {
                 $('.optOneerror').hide();
