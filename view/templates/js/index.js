@@ -168,6 +168,7 @@ $(function(){
 		$('.submitSuccess').hide();
 	})
     window.onresize = function(){
+        alert(1)
         scroll.refresh();
     }
     window.addEventListener("resize", function() {
