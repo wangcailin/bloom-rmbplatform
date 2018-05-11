@@ -86,7 +86,7 @@ $(function(){
 	$('.submit').click(function(){
 		if (step == false){
             var canpost = true;
-            if($('.optOne .active').length == 0){
+            if($('.optOne .active').length == 0 && $('.optTwo .active').length == 0){
                 $('.optOneerror').show();
                 $('.wrapper').animate({scrollTop: -$('#username').offset().top}, 300);
                 canpost = false;
@@ -95,15 +95,17 @@ $(function(){
             }
             if($('.optOne .active').length === 1){
                 service = $('.optOne .active').text();
+            }else if($('.optOne .active').length === 0){
+                service = null;
             }else {
                 service = $('.optOne .optionbtn').eq(0).text() + ',' + $('.optOne .active').eq(1).text();
             }
             if($('.optTwo .active').length === 1){
-                site = $('.optTwo .active').text();
+                site = ',' + $('.optTwo .active').text();
             }else if($('.optTwo .active').length === 0){
                 site = null;
             }else {
-                site = $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
+                site = ',' + $('.optTwo .active').eq(0).text() + ',' + $('.optTwo .active').eq(1).text();
             }
 
             if (!guizZ($('#username'), '名字')) {
@@ -151,8 +153,7 @@ $(function(){
                 country: $('#country').val(),
                 email: $('#email').val(),
                 phone: $('#phone').val(),
-                service: service,
-                site: site
+                service: service + site
             };
             step = true;
             $.post('index.php?m=event&a=registerSubmit', object, function(res){
