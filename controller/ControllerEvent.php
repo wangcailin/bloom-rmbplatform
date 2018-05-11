@@ -87,7 +87,7 @@
 
         public function register()
         {
-
+            $this->template->display('register.html');
         }
         public function registerSubmit()
         {
