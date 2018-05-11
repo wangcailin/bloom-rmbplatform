@@ -23,7 +23,7 @@
 	<div id="rmb-video" style="opacity: 0;" class="orientation">
 		<div class="video-background">
 			<div class="videoBox">
-				<video id="player-container-id" cotrols playsinline webkit-playinline x5-playinline></video>
+				<video id="player-container-id" x5-video-orientation="landscape" cotrols playsinline webkit-playinline x5-playinline></video>
 			</div>
 			<img src="{{$imageSite}}poster.jpg" class="centerBg" alt="">
 			<span class="playIcon"></span>
@@ -85,7 +85,7 @@
     if(isiOS){
     	iosFun(window, document);
     } else {
-    	$('.rmb-video').removeClass('orientation').addClass('orientated');
+    	$('#rmb-video').removeClass('orientation').addClass('orientated');
     }
 	$('.navList').click(function(){
 		$('.navList').toggleClass('slideactive');
